@@ -41,3 +41,15 @@ total 32K
 root@minikube:/var/lib/minikube/certs/etcd#
 
 
+bharathkumardasaraju@Downloads$ kubectl exec etcd-minikube -n kube-system -- etcdctl --endpoints https://192.168.49.2:2379 --cacert /var/lib/minikube/certs/etcd/ca.crt --cert /var/lib/minikube/certs/etcd/server.crt --key /var/lib/minikube/certs/etcd/server.key get bharath
+bharath
+kubestronaut
+bharathkumardasaraju@Downloads$
+
+
+kubectl exec etcd-minikube -n kube-system -- etcdctl --endpoints https://192.168.49.2:2379 \
+     --cacert /var/lib/minikube/certs/etcd/ca.crt \
+     --cert /var/lib/minikube/certs/etcd/server.crt \
+     --key /var/lib/minikube/certs/etcd/server.key \
+     get bharath
+
