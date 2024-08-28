@@ -316,3 +316,15 @@ bharathkumardasaraju@kubestronaut$ kubectl exec etcd-minikube -n kube-system -- 
 /registry/services/specs/kube-system/kube-dns
 /registry/storageclasses/standard
 bharathkumardasaraju@kubestronaut$
+
+################## etcdctl put and get commands ##################
+
+bharathkumardasaraju@Downloads$ kubectl exec etcd-minikube -n kube-system -- etcdctl --endpoints https://192.168.49.2:2379 --cacert /var/lib/minikube/certs/etcd/ca.crt --cert /var/lib/minikube/certs/etcd/server.crt --key /var/lib/minikube/certs/etcd/server.key put bharath kubestronaut
+OK
+bharathkumardasaraju@Downloads$ kubectl exec etcd-minikube -n kube-system -- etcdctl --endpoints https://192.168.49.2:2379 --cacert /var/lib/minikube/certs/etcd/ca.crt --cert /var/lib/minikube/certs/etcd/server.crt --key /var/lib/minikube/certs/etcd/server.key get bharath
+bharath
+kubestronaut
+bharathkumardasaraju@Downloads$
+
+
+
