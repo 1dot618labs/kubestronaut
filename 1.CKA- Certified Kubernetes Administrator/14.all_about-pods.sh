@@ -73,7 +73,7 @@ bharathkumardasaraju@~$ curl -v -H "Accept: text/html" localhost:8888
 < Content-Length: 615
 < Last-Modified: Mon, 12 Aug 2024 14:21:01 GMT
 < Connection: keep-alive
-< ETag: "66ba1a4d-267"
+< ETag: \"66ba1a4d-267\"
 < Accept-Ranges: bytes
 <
 <!DOCTYPE html>
@@ -102,3 +102,39 @@ Commercial support is available at
 * Connection #0 to host localhost left intact
 bharathkumardasaraju@~$
 
+
+We can also access the nginx pod using its internal IP from the node like below.
+
+bharathkumardasaraju@Downloads$ kubectl get pods -o wide -n default
+NAME    READY   STATUS    RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+nginx   1/1     Running   0          18m   10.244.0.17   minikube   <none>           <none>
+bharathkumardasaraju@Downloads$
+
+
+bharathkumardasaraju@Downloads$ minikube ssh
+Last login: Fri Aug 30 00:56:38 2024 from 192.168.49.1
+docker@minikube:~$ curl 10.244.0.17
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+docker@minikube:~$
