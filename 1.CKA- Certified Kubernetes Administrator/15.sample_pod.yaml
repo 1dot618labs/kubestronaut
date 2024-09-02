@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bkapp
+  labels:
+     app: bkapp-frontend
+     type: nginx-frontend
+     env: development
+spec:
+  containers:
+    - image: nginx
+      name: bkweb
