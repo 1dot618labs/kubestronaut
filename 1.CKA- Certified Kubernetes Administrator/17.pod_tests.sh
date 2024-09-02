@@ -28,3 +28,38 @@ default       redis                                     1/1     Running     0   
 
 controlplane ~ ➜
 
+
+bharathkumardasaraju@1.CKA- Certified Kubernetes Administrator$ kubectl run redis --image redis --dry-run=client -o yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: redis
+  name: redis
+spec:
+  containers:
+  - image: redis
+    name: redis
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+bharathkumardasaraju@1.CKA- Certified Kubernetes Administrator$
+
+
+bharathkumardasaraju@1.CKA- Certified Kubernetes Administrator$ kubectl run redis --image redis --dry-run=client -o yaml > 18.redis_sample.yaml
+
+bharathkumardasaraju@1.CKA- Certified Kubernetes Administrator$
+
+bharathkumardasaraju@1.CKA- Certified Kubernetes Administrator$ kubectl apply -f 18.redis_sample.yaml
+pod/redis created
+bharathkumardasaraju@1.CKA- Certified Kubernetes Administrator$
+
+bharathkumardasaraju@1.CKA- Certified Kubernetes Administrator$ kubectl get pods -o wide -n default
+NAME    READY   STATUS    RESTARTS   AGE   IP            NODE       NOMINATED NODE   READINESS GATES
+bkapp   1/1     Running   0          42m   10.244.0.21   minikube   <none>           <none>
+redis   1/1     Running   0          39s   10.244.0.22   minikube   <none>           <none>
+bharathkumardasaraju@1.CKA- Certified Kubernetes Administrator$
+
+
